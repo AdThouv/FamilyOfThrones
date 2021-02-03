@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FamilyOfThrones{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Welcome in FamilyOfThrones</h1>
+</div>
+<a href="{{path ('family_index')}}">Family</a>
+<a href="{{path ('family_kingdom_index')}}">Kingdom</a>
+<a href="{{path ('person_index')}}">Persons</a>
+<a href="{{path ('ticket_index')}}">Ticket</a>
+
+{% endblock %}
