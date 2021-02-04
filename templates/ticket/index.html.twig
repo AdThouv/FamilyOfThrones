@@ -1,41 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ticket index{% endblock %}
+{% block title %}Billeterie{% endblock %}
 
 {% block body %}
-    <h1>Ticket index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Date</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h1>Billeterie</h1>
         {% for ticket in tickets %}
-            <tr>
-                <td>{{ ticket.id }}</td>
-                <td>{{ ticket.name }}</td>
-                <td>{{ ticket.price }}</td>
-                <td>{{ ticket.date ? ticket.date|date('Y-m-d') : '' }}</td>
-                <td>{{ ticket.description }}</td>
-                <td>
-                    <a href="{{ path('ticket_show', {'id': ticket.id}) }}">show</a>
-                    <a href="{{ path('ticket_edit', {'id': ticket.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+        <div class="card bg-dark text-white">
+            <a href="{{ path('ticket_show', {'id': ticket.id}) }}"><img src="{{ ticket.picture }}" class="card-img" alt=""></a>
+        </div>
         {% endfor %}
-        </tbody>
-    </table>
 
     <a href="{{ path('ticket_new') }}">Create new</a>
 {% endblock %}

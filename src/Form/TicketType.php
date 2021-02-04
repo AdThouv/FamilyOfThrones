@@ -16,7 +16,7 @@ class TicketType extends AbstractType
             ->add('price')
             ->add('date')
             ->add('description')
-            ->add('user')
+            ->add('picture')
         ;
     }
 

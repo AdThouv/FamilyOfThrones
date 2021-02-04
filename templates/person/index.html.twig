@@ -1,43 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Person index{% endblock %}
+{% block title %}Personnages{% endblock %}
 
 {% block body %}
-    <h1>Person index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>BirthDate</th>
-                <th>Picture</th>
-                <th>Role</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h1>Personnages</h1>
+    <div class="container-card">
         {% for person in people %}
-            <tr>
-                <td>{{ person.id }}</td>
-                <td>{{ person.firstname }}</td>
-                <td>{{ person.lastname }}</td>
-                <td>{{ person.BirthDate ? person.BirthDate|date('d-m-Y') : '' }}</td>
-                <td><img src="{{ person.picture }}"></td>
-                <td>{{ person.role }}</td>
-                <td>
-                    <a href="{{ path('person_show', {'id': person.id}) }}">show</a>
-                    <a href="{{ path('person_edit', {'id': person.id}) }}">edit</a>
-                </td>
-            </tr>
+        <div class="card">
+                <img style="height: 50vh;width : 100%; margin-top:0rem;" src="{{ person.picture}}" alt="">
+                <div class="card-body">
+                    <h1 class="card-title">{{person.firstname}}</br>{{ person.lastname }}</h1><a class="more" href="{{ path('person_show', {'id': person.id}) }}">Voir Plus</a></br>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <a href="{{ path('person_edit', {'id': person.id}) }}">Editer</a>
+                    {% endif %}
+                </div>
+            </div>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
-
+    </div>
     <a href="{{ path('person_new') }}">Create new</a>
 {% endblock %}

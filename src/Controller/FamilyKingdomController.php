@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/family/kingdom")
+ * @Route("/family_kingdom")
  */
 class FamilyKingdomController extends AbstractController
 {

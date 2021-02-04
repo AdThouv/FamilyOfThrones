@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Family;
 use App\Entity\Person;
 use App\Form\PersonType;
 use App\Repository\PersonRepository;

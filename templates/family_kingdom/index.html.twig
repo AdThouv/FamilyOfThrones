@@ -1,37 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}FamilyKingdom index{% endblock %}
+{% block title %}Territoires{% endblock %}
 
 {% block body %}
-    <h1>FamilyKingdom index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h1>Territoires</h1>
+    <div class="container-card">
         {% for family_kingdom in family_kingdoms %}
-            <tr>
-                <td>{{ family_kingdom.id }}</td>
-                <td>{{ family_kingdom.name }}</td>
-                <td>{{ family_kingdom.description }}</td>
-                <td>
-                    <a href="{{ path('family_kingdom_show', {'id': family_kingdom.id}) }}">show</a>
-                    <a href="{{ path('family_kingdom_edit', {'id': family_kingdom.id}) }}">edit</a>
-                </td>
-            </tr>
+            <div class="card">
+                <img style="height: 50vh;width : 100%; margin-top:0rem;" src="{{ family_kingdom.picture}}" alt="">
+                <div class="card-body">
+                    <h1 class="card-title">{{ family_kingdom.name }}</h1><a class="more" href="{{ path('family_kingdom_show', {'id': family_kingdom.id}) }}">Voir Plus</a></br>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <a href="{{ path('family_edit', {'id': family.id}) }}">Editer</a>
+                    {% endif %}
+                </div>
+            </div>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
-            </tr>
+                <td colspan="5">no records found</td>
+            </tr> 
         {% endfor %}
-        </tbody>
-    </table>
-
+    </div>    
     <a href="{{ path('family_kingdom_new') }}">Create new</a>
 {% endblock %}

@@ -30,7 +30,7 @@ class Person
     /**
      * @ORM\Column(type="date")
      */
-    private $BirthDate;
+    private $birthDate;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -78,12 +78,12 @@ class Person
 
     public function getBirthDate(): ?\DateTimeInterface
     {
-        return $this->BirthDate;
+        return $this->birthDate;
     }
 
-    public function setBirthDate(\DateTimeInterface $BirthDate): self
+    public function setBirthDate(\DateTimeInterface $birthDate): self
     {
-        $this->BirthDate = $BirthDate;
+        $this->birthDate = $birthDate;
 
         return $this;
     }

@@ -14,7 +14,8 @@ class FamilyType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('familyKindown')
+            ->add('picture')
+            ->add('familyKindown', null , ['choice_label'=>'name'])
         ;
     }
 

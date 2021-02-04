@@ -3,40 +3,23 @@
 {% block title %}Person{% endblock %}
 
 {% block body %}
-    <h1>Person</h1>
+    <h1>{{ person.firstname }} {{ person.lastname}}</h1>
+       <div class="container-card-show"> 
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ person.id }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ person.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ person.lastname }}</td>
-            </tr>
-            <tr>
-                <th>BirthDate</th>
-                <td>{{ person.BirthDate ? person.BirthDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>{{ person.picture }}</td>
-            </tr>
-            <tr>
-                <th>Role</th>
-                <td>{{ person.role }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="card" style="width: 50%; ">
+            <img class="card-img-top" src="{{person.picture}}" alt="Card image cap">
+            <div class="card-body">
+                <h5>Date de naissance:</h5>
+                <p>{{ person.BirthDate ? person.BirthDate|date('d-m-Y') : '' }}</p> 
+                <h5>Role:</h5>
+                <p>{{ person.role }}</p> 
+            </div>
+                <div class="button">
 
-    <a href="{{ path('person_index') }}">back to list</a>
-
-    <a href="{{ path('person_edit', {'id': person.id}) }}">edit</a>
-
-    {{ include('person/_delete_form.html.twig') }}
+                <a href="{{ path('person_edit', {'id': person.id}) }}" class="btn btn-primary">Editer</a>
+                <a href="{{ path('person_delete', {'id': person.id} ) }}" class="btn btn-primary">{{ include('person/_delete_form.html.twig') }}</a>
+                <div>
+            </div>
+        </div>
+    </div>          
 {% endblock %}
